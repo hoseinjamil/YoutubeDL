@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Downloader</title>
+    <link rel="stylesheet" href="{% static "style/style.css" %}">
+    <link rel="stylesheet" href="{% static "style/manual.css" %}">
+    <link rel="shortcut icon" href="{% static "image/favicon.png" %}" type="image/x-icon">
+    <meta name="theme-color" content="#D91C1C"/>
+</head>
+
+<body class="bg-red-100 font-newTimes">
+
+<div class="app flex justify-center w-full mt-32">
+    <div class="container flex justify-center flex-col items-center mb-72">
+        <h1 class="title text-red-600 text-3xl mb-1 font-semibold font-newTimes sm:text-5xl">Youtube Downloader <i
+                class="fas"></i></h1>
+        <p class="sub-title text-black text-lg sm:text-2xl">Download Youtube Videos For Free</p>
+        <div class="mx-8">
+            <form action="linksubmit" method="GRT">
+                {% block link %}
+                    <input id="url" name="inp" type="text" placeholder="Paste the URL of the video" required><br>
+                    <br>
+                {% endblock %}
+                <button type="submit"><i class="fa fa-search"></i> Search</button>
+                <br><br>
+            </form>
+            <table>
+                <div class="frame">
+                    <iframe src="{{ embed }}"></iframe>
+                    <br><br>
+                </div>
+
+                <div class="resolution_table">
+                    <thead>
+                    <tr>
+                        <th>Resolutions</th>
+                        <th>Download</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in res %}
+                        <tr>
+                            <td>{{ i }}</td>
+                            <td><a href="{{ i }}{{ url2 }}">Download</a></td>
+                        </tr>
+                    {% endfor %}
+                </div>
+            </table>
+        </div>
+    </div>
+    <div id="loader-wrapper" class="hidden" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;display:block" width="200px"
+             height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <g transform="translate(20 50)">
+                <circle cx="0" cy="0" r="6" fill="#f00">
+                    <animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline"
+                                      keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1"
+                                      dur="1s"
+                                      repeatCount="indefinite"></animateTransform>
+                </circle>
+            </g>
+            <g transform="translate(40 50)">
+                <circle cx="0" cy="0" r="6" fill="#f00">
+                    <animateTransform attributeName="transform" type="scale" begin="-0.25s" calcMode="spline"
+                                      keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1"
+                                      dur="1s"
+                                      repeatCount="indefinite"></animateTransform>
+                </circle>
+            </g>
+            <g transform="translate(60 50)">
+                <circle cx="0" cy="0" r="6" fill="#f00">
+                    <animateTransform attributeName="transform" type="scale" begin="-0.125s" calcMode="spline"
+                                      keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1"
+                                      dur="1s"
+                                      repeatCount="indefinite"></animateTransform>
+                </circle>
+            </g>
+            <g transform="translate(80 50)">
+                <circle cx="0" cy="0" r="6" fill="#f00">
+                    <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline"
+                                      keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1"
+                                      dur="1s"
+                                      repeatCount="indefinite"></animateTransform>
+                </circle>
+            </g>
+        </svg>
+    </div>
+</div>
+</div>
+
+<div class="copyright">
+    <span class="text-sm text-gray-600 font-sans">© 2024 all rights reserved. </span>
+    <span class="text-sm"><a href="#" class="text-red-700">Yahya Jamil</a> & <a href="#" class="text-red-700">Hosein Jamil</a></span>
+</div>
+
+<script src="{% static "js/script.js" %}"></script>
+</body>
+
+</html>
